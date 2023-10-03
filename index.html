@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crud LocalStorage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+
+    <div class="container text-center">
+        <h1> Liga Universitaria de Softball 
+          <i class="fa-solid fa-baseball-bat-ball"></i>
+        </h1>
+        
+    </div>
+    <div class="container">
+        <div class="container mb-5">
+        <div class="row">
+            <form>
+                <div class="mb-3">
+                  <label class="form-label">Nombre del jugador</label>
+                  <input type="text" class="form-control" id="inputNombre" placeholder="Nombre del jugador">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Posición</label>
+                    <input type="text" class="form-control" id="inputPosicion" placeholder="Posición">
+                  </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Hits sencillos</label>
+                    <input type="number" class="form-control" id="inputSencillos" placeholder="Número de hits sencillos">
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Hits dobles</label>
+                    <input type="number" class="form-control" id="inputDobles" placeholder="Número de hits dobles">
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label class="form-label">Hits triples</label>
+                    <input type="number" class="form-control" id="inputTriples" placeholder="Número de hits triples">
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Home runs</label>
+                    <input type="number" class="form-control" id="inputHr" placeholder="Número de cuadrangulares">
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Pitcher G/P</label>
+                    <input type="text" class="form-control" id="inputGp" placeholder="Juego ganado o pérdido">
+                  </div>
+
+                <button type="button" class="btn btn-success" id="Btn_guardar" onclick="AddData()">Guardar
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
+                    <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+                  </svg>
+                </button>
+                <button type="button" class="btn btn-primary" id="Btn_actualizar">Actualizar
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-upload" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383z"/>
+                    <path fill-rule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                  </svg>
+                </button>
+
+
+
+              </form>
+        </div>
+      <hr>
+      <table class="table table-bordered" id="tableData">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Posición</th>
+            <th scope="col">Sencillos</th>
+            <th scope="col">Dobles</th>
+            <th scope="col">Triples</th>
+            <th scope="col">Home runs</th>
+            <th scope="col">Gano/Perdió</th>
+            <th scope="col">Acciones</th>
+
+          </tr>
+        </thead>
+        <tbody id="cuerpoTabla">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
